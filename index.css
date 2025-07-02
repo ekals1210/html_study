@@ -1,0 +1,149 @@
+/* css코드는 위에서 부터 순차적으로 읽는다. */
+/* 전역변수에서 css값을 선언하고 싶을 경우 *사용 */
+*{
+    padding: 0;
+    margin: 0;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+/* a태그는 특정 css에서만 적용되는 것이 아니라 전체 a태그에 적용하고 싶을 경우 전역css에서 관리해주는 것이 좋음 */
+.banner{
+    width: 100vw; 
+    /* 화면 전체 디바이스의 전체값 */
+    height: 80px;
+    background-color:beige;
+}
+.banner__img{
+    width: 100%;
+    height: 100%;
+} 
+/* 이미지로 class명을 지정할 경우 실제적으로 사용되는 img의 영역까지 css가 적용되기 때문에 특정 명칭 필요 */
+/* 자식은 부모값을 따라가기 떄문에 부모요소인 banner의 크기가 100vw여서 100% 할 시 부모요소를 따라 출력된다. */
+.header{
+    /* 계산하다의 clac 100vw 에서 padding 값을 뺴준다 */
+    width: calc(100vw - 48px);
+    /* height: 80px; */
+    background-color: aqua;
+    /* 객체 가로 배열 */
+    display: flex;
+    /* 아이템들의 배치 배치하다의 의미 align */
+    align-items: center;
+    /* 내부적인 영역을 안쪽으로 잡는 것 레이아웃 안쪽 영역*/
+    /* 시계방향으로 적용되는 것을 알 수 있음 top right bottom left */
+    padding:12px 24px; 
+    /* 외부적인 영역을 바깥쪽으로 잡는 것 레이아웃 바깥쪽 영역 */
+    /* margin:0; */
+    justify-content: space-between;
+    border-bottom: 2px solid #000;
+}
+
+.header__middle{
+    display: flex;
+    align-items: center;
+    /* 디스플레이가 flex나 혹은 grid로 적용되어 있어야 사용이 가능 */
+    /* 내가 나중에 코드를 추가하더라도 자식들이 gap속성이 적용된다 */
+    gap:24px;
+}
+/* 별도 영역일 경우 margin left를 사용하는 것이 좋고 전체 영역일 경우 gap이 좋다 */
+/* .header__middle__btn{
+    display: flex;
+    align-items: center;
+    
+} */
+
+.header__middle__nav{
+    display: flex;
+    gap:20px;
+}
+
+.main{
+    width: 100vw;
+    max-width: 1024px;
+    padding: 24px;
+    background-color: pink;
+
+    margin:0 auto;
+}
+
+.main__chart{
+    display: flex;
+    flex-direction: column;
+    border:2px solid black;
+    box-sizing: border-box;
+}
+
+.main__chart__section{
+    height: 60px;
+    display: flex;
+    align-items: center;
+    /* gap:24px; */
+}
+
+/* 동일한 클래스명에서 2번째 클래스명을 사용하고 싶을 경우 */
+.main__chart__section:nth-child(2){
+    /* 그 중에서도 내가 어떤 곳에서 변경을 하고 싶을 경우 클래스 명 선언 후 변경가능 */
+    .label{
+         background-color: white;
+    }
+}
+
+.label{
+    width: 135px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(190, 102, 102);
+}
+/* .label:nth-child(2){
+    background-color: white;
+} */
+
+.content{
+    width: calc(100% - 135px);
+    height: 100%;
+    padding:0 24px;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+}
+/* ------------------------------------------------- */
+/* 6월 30일 */
+.container{
+    width: 1024px;
+    height: 300px;
+    display: flex; 
+    justify-content: space-evenly;
+    /* flex의 기본 방향 설정 값은 가로방향이다 */
+    /* flex-direction: row-reverse; */
+    /* 플렉스 아이템이 플렉스 컨테이너를 벗어나도 무시한다. nowrap */
+    /* 플렉스 아이템이 플렉스 컨테이너를 벗어날 경우 줄 바꿈한다. wrap */
+    /* flex-wrap: wrap; */
+    /* gap: 24px; */
+    background-color: black;
+}
+
+.container__item{
+    width:100px;
+    height:100px;
+    background-color: whitesmoke;
+}
+
+.container__grid{
+    width: 1024px;
+    height: 300px;
+
+    display: grid;
+    grid-template-columns: repeat(1fr, 100px);
+    grid-template-rows: 100px 100px;
+    gap: 24px;
+}
+
+.container__item__grid{
+    width:100px;
+    /* height:100px; */
+    background-color: whitesmoke;
+}
